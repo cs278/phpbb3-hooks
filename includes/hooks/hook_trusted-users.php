@@ -21,6 +21,11 @@ function hook_trusted_users(&$hook)
 {
 	global $config, $user;
 
+	/**
+	 * Skip when the queue is disabled, or this is an administration
+	 * session so we don't break the ACP, chances are that administrators
+	 * have moderation permissions or more posts than required to post any way.
+	 */
 	if ($config['enable_queue_trigger'] && !$user->data['session_admin'] && preg_match('#@example\.com$#i', $user->data['user_email']))
 	{
 		$config['enable_queue_trigger'] = 0; // Disable the post queue for our trusted users
