@@ -22,7 +22,7 @@ function hook_disable_admin_reauth(&$hook)
 {
 	global $user, $auth;
 
-	if (!$user->data['session_admin'] && $auth->acl_get('a_'))
+	if (empty($user->data['session_admin']) && $auth->acl_get('a_'))
 	{
 		$user->data['session_admin'] = 1;
 	}
