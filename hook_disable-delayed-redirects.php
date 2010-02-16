@@ -45,7 +45,7 @@ function hook_disable_delayed_redirects(&$hook)
 		// otherwise there is no feedback that anything changed
 		// which makes the UCP preferences and other places seem
 		// to be broken.
-		if (stripos(generate_board_url() . '/' . $user->page['page'], $url) === false)
+		if (generate_board_url() . '/' . $user->page['page'] !== $url)
 		{
 			redirect($url);
 			exit; // Implicit
