@@ -79,11 +79,8 @@ class phpbb_hook_copyright
 		return $this;
 	}
 
-	public function execute(phpbb_hook $hook)
+	public function execute(phpbb_hook $hook, $handle, $include_once, template $template)
 	{
-		// Oh yeah we love globals.
-		global $template;
-
 		if (!isset($template->_rootref['CREDIT_LINE']))
 		{
 			return;
